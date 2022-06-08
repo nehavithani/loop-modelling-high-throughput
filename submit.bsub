@@ -1,0 +1,14 @@
+#!/bin/sh
+#BSUB -q bowman
+#BSUB -W 12:00
+#BSUB -n 12
+#BSUB -R "span[ptile=12]"
+#BSUB -J min
+#BSUB -o min-%J.log
+#BSUB -e min-%J.log
+
+/project/bowmanlab/vithanin/Software/modeller-installation/bin/modpy.sh  python modelling.py incomplete_structures.dat 
+
+#remove junk files
+rm *ini *sch *rsr
+
